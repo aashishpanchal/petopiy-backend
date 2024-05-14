@@ -1,0 +1,21 @@
+{
+  "name": "@repo/logger",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint \"src/**/*.ts*\" --max-warnings 0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
+    "eslint": "^8.57.0",
+    "chalk": "4.1.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "winston": "^3.13.0"
+  }
+}
