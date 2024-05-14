@@ -2,7 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
-import { appRoutes } from './apps/app.routes';
+import { appRoutes } from './app/app.routes';
 import { logHandler, errorHandler } from './middlewares';
 import { Express } from 'express';
 
@@ -32,7 +32,7 @@ export class ApiServer {
 
   // initialize routers
   private routers(app: Express) {
-    app.use('/api/v1', appRoutes());
+    app.use('/api', appRoutes());
     app.all('*', errorHandler.notFound);
   }
 

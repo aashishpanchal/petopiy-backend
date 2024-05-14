@@ -23,7 +23,7 @@ export const authRoutes = () => {
   // initialize router
   router
     .route('/login')
-    .get(validate.query(LoginDto), LocalAuth, controller.getMethod('login'));
+    .post(validate.body(LoginDto), LocalAuth, controller.getMethod('login'));
   router
     .route('/register')
     .post(validate.body(RegisterDto), controller.getMethod('register'));
@@ -34,7 +34,7 @@ export const authRoutes = () => {
     .route('/resent-otp')
     .post(validate.body(EmailDto), controller.getMethod('resentOtp'));
   router.route('/refresh-token').post(controller.getMethod('refresh'));
-  router.route('/logout').delete(JwtAuth, controller.getMethod('logout'));
+  router.route('/logout').post(JwtAuth, controller.getMethod('logout'));
 
   return router;
 };

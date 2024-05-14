@@ -21,6 +21,12 @@ export const EnvSchema = z.object({
   SMTP_USER: z.string(),
   SMTP_PASS: z.string(),
   SMTP_FROM: z.string(),
+
+  // s3 bucket
+  S3_REGION: z.string(),
+  S3_BUCKET: z.string(),
+  AWS_ACCESS_KEY: z.string(),
+  AWS_SECRET_KEY: z.string(),
 });
 
 // types

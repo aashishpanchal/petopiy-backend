@@ -1,11 +1,6 @@
 import { User } from './user.model';
-import {
-  Prop,
-  type Ref,
-  DocumentType,
-  ReturnModelType,
-} from '@typegoose/typegoose';
 import { modelFactory } from '@/database';
+import { Prop, Ref, DocumentType, ReturnModelType } from '@typegoose/typegoose';
 
 export class Token {
   @Prop({ ref: () => User, required: true })

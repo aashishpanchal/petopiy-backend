@@ -34,12 +34,12 @@ export class AuthController {
     // Generate access and refresh tokens
     const { access, refresh } = await this.tokenService.generate(req.user.id);
     // Set access token in cookie
-    res.cookie('access', access.token, {
+    res.cookie(TokenEnum.ACCESS, access.token, {
       httpOnly: true,
       maxAge: access.maxAge,
     });
     // Set refresh token in cookie
-    res.cookie('refresh', refresh.token, {
+    res.cookie(TokenEnum.REFRESH, refresh.token, {
       httpOnly: true,
       maxAge: refresh.maxAge,
     });
@@ -89,7 +89,7 @@ export class AuthController {
     // Refresh access token and get new access token details
     const access = await this.tokenService.refreshAccessToken(token);
     // Set new access token in cookie
-    res.cookie('access', access.token, {
+    res.cookie(TokenEnum.ACCESS, access.token, {
       httpOnly: true,
       maxAge: access.maxAge,
     });
@@ -104,8 +104,8 @@ export class AuthController {
     // Block refresh token
     await this.tokenService.blockRefreshToken(token);
     // Clear access and refresh tokens from cookies
-    res.clearCookie('access');
-    res.clearCookie('refresh');
+    res.clearCookie(TokenEnum.ACCESS);
+    res.clearCookie(TokenEnum.REFRESH);
     // Return success response
     return ApiRes.ok(null, 'Logout successfully');
   }

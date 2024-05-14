@@ -1,8 +1,8 @@
 import { config } from '@/config';
 import { singleton } from 'tsyringe';
-import { UserService } from '@/apps/user';
+import { UserService } from '@/app/user';
 import { ForbiddenError } from '@/lib/errors';
-import { Notification, OTP } from '@/apps/shared';
+import { Notification, OTP } from '@/app/shared';
 import { RegisterDto, VerifyEmailDto } from '../auth.dtos';
 
 @singleton()

@@ -6,7 +6,7 @@ import { ConflictError, NotFoundError, UnauthorizedError } from '@/lib/errors';
 
 @singleton()
 export class UserService {
-  constructor(@inject(User) private userModel: UserModel) {}
+  constructor(@inject(User.name) private userModel: UserModel) {}
 
   async validateUser(username: string, password: string) {
     const user = await this.userModel.findOne({

@@ -1,7 +1,7 @@
 import { config } from '@/config';
 import { container } from 'tsyringe';
 import { TokenEnum } from '@/constants';
-import { UserService } from '@/apps/user';
+import { UserService } from '@/app/user';
 import { UnauthorizedError } from '@/lib/errors';
 import { Strategy, ExtractJwt } from 'passport-jwt';
 
@@ -13,7 +13,7 @@ export const JwtStrategy = new Strategy(
     secretOrKey: config.JWT.SECRET,
     jwtFromRequest: ExtractJwt.fromExtractors([
       ExtractJwt.fromAuthHeaderAsBearerToken(),
-      (req) => req.cookies?.['access'] || null,
+      (req) => req.cookies?.[TokenEnum.ACCESS] || null,
     ]),
   },
   async (payload, done) => {

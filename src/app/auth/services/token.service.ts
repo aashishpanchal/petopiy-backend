@@ -1,7 +1,7 @@
 import ms from 'ms';
 import { config } from '@/config';
 import { TokenEnum } from '@/constants';
-import { JwtToken } from '@/apps/shared';
+import { JwtToken } from '@/app/shared';
 import { inject, singleton } from 'tsyringe';
 import { Token, TokenModel } from '@/models';
 import { UnauthorizedError } from '@/lib/errors';

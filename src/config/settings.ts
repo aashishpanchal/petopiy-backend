@@ -32,4 +32,11 @@ export const config = Object.freeze({
     ISSUER: env.NAME,
     SECRET: env.SECRET,
   },
+  // s3 bucket
+  S3: {
+    REGION: env.S3_REGION,
+    BUCKET: env.S3_BUCKET,
+    ACCESS_KEY: env.AWS_ACCESS_KEY,
+    SECRET_KEY: env.AWS_SECRET_KEY,
+  },
 });
