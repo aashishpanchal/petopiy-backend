@@ -5,6 +5,7 @@ import {
   DocumentType,
   ReturnModelType,
 } from '@typegoose/typegoose';
+import { File } from '../file.model';
 
 @ModelOptions({ schemaOptions: { timestamps: true } })
 export class Brand {
@@ -14,8 +15,8 @@ export class Brand {
   @Prop({ unique: true })
   slug: string;
 
-  @Prop()
-  img: string;
+  @Prop({ ref: () => File })
+  img: File;
 
   @Prop({ default: true })
   status: boolean;

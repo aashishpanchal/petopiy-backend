@@ -1,4 +1,3 @@
-import { User } from './auth';
 import { modelFactory } from '@/database';
 import {
   Prop,
@@ -7,6 +6,7 @@ import {
   DocumentType,
   ReturnModelType,
 } from '@typegoose/typegoose';
+import { User } from './auth';
 
 @ModelOptions({
   schemaOptions: { timestamps: true },

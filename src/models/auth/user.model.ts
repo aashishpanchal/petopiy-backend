@@ -34,9 +34,6 @@ export class User {
   @Prop({ type: String, default: RoleEnum.USER, enum: RoleEnum })
   role: RoleEnum;
 
-  @Prop()
-  avatar?: string;
-
   @Prop({ default: false })
   is_blocked: boolean;
 
