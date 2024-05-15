@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { authRoutes } from './auth';
 import { userRoutes } from './user';
-import { bucketRoutes } from './bucket';
+import { mediaRoutes } from './media';
 
 export const appRoutes = (): Router => {
   // make v1 router
@@ -10,7 +10,7 @@ export const appRoutes = (): Router => {
   // api router are init
   router.use('/user', userRoutes());
   router.use('/auth', authRoutes());
-  router.use('/bucket', bucketRoutes());
+  router.use('/media', mediaRoutes());
 
   return router;
 };

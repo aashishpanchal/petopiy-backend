@@ -1,31 +1,28 @@
 import { Router } from 'express';
 import { JwtAuth } from '../auth';
 import { MongoIdDto } from '../shared';
-import { UploadFileDto } from './bucket.dtos';
-import { upload, validate } from '@/middlewares';
+import { validate } from '@/middlewares';
+import { MediaController } from './media.controller';
 import { controllerFactory } from '@/lib/controller';
-import { BucketController } from './bucket.controller';
+import { GetSignedUrlDto, UpdateMediaDto } from './media.dtos';
 
-export const bucketRoutes = (): Router => {
+export const mediaRoutes = () => {
   // make v1 router
-  const router = Router();
+  const router: Router = Router();
   // create controller
-  const controller = controllerFactory(BucketController);
+  const controller = controllerFactory(MediaController);
   // middlewares
   router.use(JwtAuth);
   // initialize router
   router
     .route('/')
-    .post(
-      validate.query(UploadFileDto),
-      upload.single('file'),
-      controller.getMethod('upload'),
-    );
+    .post(validate.body(GetSignedUrlDto), controller.getMethod('create'));
   router
     .route('/:id')
+    .get(validate.params(MongoIdDto), controller.getMethod('get'))
     .put(
+      validate.body(UpdateMediaDto),
       validate.params(MongoIdDto),
-      upload.single('file'),
       controller.getMethod('update'),
     )
     .delete(validate.params(MongoIdDto), controller.getMethod('delete'));

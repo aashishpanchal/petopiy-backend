@@ -11,7 +11,7 @@ import { User } from './auth';
 @ModelOptions({
   schemaOptions: { timestamps: true },
 })
-export class File {
+export class Media {
   @Prop({ ref: () => User, required: true })
   user: Ref<User>;
 
@@ -19,10 +19,10 @@ export class File {
   name: string;
 
   @Prop({ required: true })
-  folder: string;
+  key: string;
 
   @Prop({ required: true })
-  type: string;
+  mimetype: string;
 
   @Prop({ required: true })
   size: number;
@@ -32,8 +32,8 @@ export class File {
 }
 
 // types
-export type FileModel = ReturnModelType<typeof File>;
-export type FileDocument = DocumentType<File>;
+export type MediaModel = ReturnModelType<typeof Media>;
+export type MediaDocument = DocumentType<File>;
 
 // register model in global container
-modelFactory(File.name, File);
+modelFactory(Media.name, Media);
