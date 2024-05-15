@@ -11,7 +11,7 @@ import { Media } from '../media.model';
 @ModelOptions({ schemaOptions: { timestamps: true } })
 export class Category {
   @Prop({ ref: () => Category, default: null })
-  parent: Ref<Category>;
+  child: Ref<Category>;
 
   @Prop()
   name: string;

@@ -7,7 +7,7 @@ import { CreateCategoryDto, UpdateCategoryDto } from './category.dtos';
 export class CategoryService {
   constructor(@inject(Category.name) private categoryModel: CategoryModel) {}
 
-  async create({ parent, ...createDto }: CreateCategoryDto) {
+  async create({ child, ...createDto }: CreateCategoryDto) {
     // Check if a category with the given slug already exists
     const existingCategory = await this.categoryModel.findOne({
       slug: createDto.slug,
@@ -17,7 +17,7 @@ export class CategoryService {
       throw new BadRequestError('Category with slug already exists');
     }
     // Create and save new category
-    const category = new this.categoryModel({ parent, ...createDto });
+    const category = new this.categoryModel({ child, ...createDto });
     return await category.save();
   }
 

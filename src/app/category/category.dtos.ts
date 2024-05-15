@@ -3,12 +3,12 @@ import { isMongoId } from '../shared';
 
 // Zod schema for Category DTO
 export const CreateCategoryDto = z.object({
-  parent: isMongoId().nullable().optional(), // Ref<Category> as string for simplicity
-  name: z.string().min(1),
-  slug: z.string().min(1),
-  img: isMongoId().optional(), // Ref<Media> as string for simplicity
+  child: isMongoId().nullable().optional(), // Ref<Category> as string for simplicity
+  name: z.string(),
+  slug: z.string(),
+  img: isMongoId(), // Ref<Media> as string for simplicity
   description: z.string().optional(),
-  status: z.boolean().default(true),
+  status: z.boolean(),
 });
 
 export const UpdateCategoryDto = CreateCategoryDto.partial();

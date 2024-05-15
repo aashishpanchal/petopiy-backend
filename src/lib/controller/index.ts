@@ -1,2 +1,2 @@
-export * from "./factory"
-export * from "./wrapper"
+export * from './factory';
+export * from './wrapper';
