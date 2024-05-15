@@ -23,8 +23,10 @@ export class TokenService {
 
   async isBlock(jti: string) {
     const token = await this.tokenModel.findOne({ jti });
+    // if token not exit
+    if (!token) throw new UnauthorizedError('Token not exit in db.');
     // check token is blocked or not
-    if (token?.is_block) throw new UnauthorizedError('Token is blocked');
+    else if (token?.is_block) throw new UnauthorizedError('Token is blocked');
   }
 
   async doBlock(jti: string) {
