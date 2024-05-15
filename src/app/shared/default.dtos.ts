@@ -1,14 +1,12 @@
 import * as z from 'zod';
-import { isValidObjectId } from 'mongoose';
+import { isMongoId } from './zod.rules';
 
 export const EmailDto = z.object({
   email: z.string().email(),
 });
 
 export const MongoIdDto = z.object({
-  id: z.string().refine((value: string) => isValidObjectId(value), {
-    message: 'Invalid Mongodb id.',
-  }),
+  id: isMongoId(),
 });
 
 export type EmailDto = z.infer<typeof EmailDto>;

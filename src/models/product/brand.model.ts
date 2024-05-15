@@ -18,6 +18,9 @@ export class Brand {
   @Prop({ ref: () => Media })
   img: Media;
 
+  @Prop()
+  description: string;
+
   @Prop({ default: true })
   status: boolean;
 }
