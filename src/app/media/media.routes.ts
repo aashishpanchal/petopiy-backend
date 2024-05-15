@@ -7,7 +7,6 @@ import { controllerFactory } from '@/lib/controller';
 import { GetSignedUrlDto, UpdateMediaDto } from './media.dtos';
 
 export const mediaRoutes = () => {
-  // make v1 router
   const router: Router = Router();
   // create controller
   const controller = controllerFactory(MediaController);

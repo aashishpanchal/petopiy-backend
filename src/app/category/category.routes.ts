@@ -3,24 +3,24 @@ import { MongoIdDto } from '../shared';
 import { validate } from '@/middlewares';
 import { JwtAuth, onlyAdmin } from '../auth';
 import { controllerFactory } from '@/lib/controller';
-import { BrandController } from './brand.controller';
-import { CreateBrandDto, UpdateBrandDto } from './brand.dtos';
+import { CategoryController } from './category.controller';
+import { CreateCategoryDto, UpdateCategoryDto } from './category.dtos';
 
-export const brandRoutes = () => {
+export const categoryRoutes = () => {
   const router: Router = Router();
   // create controller
-  const controller = controllerFactory(BrandController);
+  const controller = controllerFactory(CategoryController);
   // middlewares
   router.use(JwtAuth, onlyAdmin);
   // initialize router
   router
     .route('/')
-    .post(validate.body(CreateBrandDto), controller.getMethod('create'));
+    .post(validate.body(CreateCategoryDto), controller.getMethod('create'));
   router
     .route('/:id')
     .get(validate.params(MongoIdDto), controller.getMethod('get'))
     .put(
-      validate.body(UpdateBrandDto),
+      validate.body(UpdateCategoryDto),
       validate.params(MongoIdDto),
       controller.getMethod('update'),
     )

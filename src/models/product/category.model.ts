@@ -1,16 +1,16 @@
 import { modelFactory } from '@/database';
 import {
+  Ref,
   Prop,
-  type Ref,
   DocumentType,
-  ReturnModelType,
   ModelOptions,
+  ReturnModelType,
 } from '@typegoose/typegoose';
 import { Media } from '../media.model';
 
 @ModelOptions({ schemaOptions: { timestamps: true } })
 export class Category {
-  @Prop({ ref: () => Category })
+  @Prop({ ref: () => Category, default: null })
   parent: Ref<Category>;
 
   @Prop()
@@ -21,6 +21,9 @@ export class Category {
 
   @Prop({ ref: () => Media })
   img: Media;
+
+  @Prop()
+  description: string;
 
   @Prop({ default: true })
   status: boolean;
