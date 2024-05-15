@@ -28,16 +28,16 @@ To build and run this app locally you will need a few things:
 
 - Clone the repository
 
-```
+```bash
 git clone https://github.com/aashishpanchal/petopiy-backend <project_name>
 ```
 
 - Install dependencies
 
-```
-cd <project_name>
+```bash
+cd project_name
 pnpm install
-cd <project_name>/packages/logger
+cd project_name/packages/logger
 pnpm build
 ```
 
